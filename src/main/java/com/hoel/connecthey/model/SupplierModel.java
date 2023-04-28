@@ -1,8 +1,8 @@
 package com.hoel.connecthey.model;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.UUID;
 
 import javax.persistence.Column;
@@ -57,7 +57,7 @@ public class SupplierModel implements Serializable {
    private String rgSupplier;
 
    @Column(name = "BRITHDAY_SUPPLIER")
-   private Date birthdaySupplier;
+   private LocalDate birthdaySupplier;
 
    @Column(name = "CREATED_AT", nullable = false)
    private LocalDateTime createdAt;
