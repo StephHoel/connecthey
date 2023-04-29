@@ -60,6 +60,14 @@ public class SupplierService extends SharedService {
       return repository.findAll();
    }
 
+   public List<SupplierModel> findAllByName(String name) {
+      return repository.findAllByName(name);
+   }
+   
+   public List<SupplierModel> findAllByDoc(String doc) {
+      return repository.findAllByDoc(doc);
+   }
+
    public SupplierModel findById(UUID id) {
       return repository.findById(id)
             .orElseThrow(() -> new ResourceNotFound(ErrorResponse.SupplierNotFoundId.getText() + id));

@@ -51,6 +51,18 @@ public class SupplierController {
       return new ResponseEntity<>(service.findById(id), HttpStatus.OK);
    }
 
+   @GetMapping("/supplier/{name}")
+   @Operation(summary = "supplier", description = "find a supplier order by name")
+   public ResponseEntity<List<SupplierModel>> getAllByName(@PathVariable(value = "name") String name) {
+      return new ResponseEntity<>(service.findAllByName(name), HttpStatus.OK);
+   }
+
+   @GetMapping("/supplier/{doc}")
+   @Operation(summary = "supplier", description = "find a supplier order by document")
+   public ResponseEntity<List<SupplierModel>> getAllByDoc(@PathVariable(value = "doc") String doc) {
+      return new ResponseEntity<>(service.findAllByDoc(doc), HttpStatus.OK);
+   }
+
    // update
    @PutMapping("/supplier")
    @Operation(summary = "supplier", description = "update a supplier")
@@ -66,5 +78,5 @@ public class SupplierController {
       service.delete(supplier);
       return new ResponseEntity<>(HttpStatus.NO_CONTENT);
    }
-   
+
 }

@@ -16,10 +16,12 @@ import javax.validation.constraints.Pattern;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Table(name = "SUPPLIER")
 @AllArgsConstructor
+@NoArgsConstructor
 @Entity
 public class SupplierModel implements Serializable {
    private static final long serialVersionUID = 1L;
