@@ -16,11 +16,9 @@ import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
 @Table(name = "COMPANY_SUPPLIER")
-@NoArgsConstructor
 @AllArgsConstructor
 @Entity
 public class CompanySupplierModel implements Serializable {

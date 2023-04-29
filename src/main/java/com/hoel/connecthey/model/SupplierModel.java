@@ -12,16 +12,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
 @Table(name = "SUPPLIER")
-@NoArgsConstructor
 @AllArgsConstructor
 @Entity
 public class SupplierModel implements Serializable {
@@ -33,7 +30,6 @@ public class SupplierModel implements Serializable {
    private UUID idSupplier;
 
    @Column(name = "CNPJ_CPF_SUPPLIER", unique = true, nullable = false)
-   @NotNull
    @Pattern(regexp = "^([0-9]{2}[.]?[0-9]{3}[.]?[0-9]{3}[/]?[0-9]{4}[-]?[0-9]{2})$|^([0-9]{3}[.]?[0-9]{3}[.]?[0-9]{3}[-]?[0-9]{2})$")
    private String cnpjCpfSupplier;
 
@@ -43,7 +39,6 @@ public class SupplierModel implements Serializable {
    @Column(name = "NAME_SUPPLIER", nullable = false)
    private String nameSupplier;
 
-   @NotNull
    @Pattern(regexp = "^[0-9]{2}[.]?[0-9]{3}[-]?[0-9]{3}$")
    @Column(name = "POSTAL_SUPPLIER", nullable = false)
    private String postalSupplier;

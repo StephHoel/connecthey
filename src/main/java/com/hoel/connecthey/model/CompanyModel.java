@@ -16,11 +16,9 @@ import javax.validation.constraints.Pattern;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
 @Table(name = "COMPANY")
-@NoArgsConstructor
 @AllArgsConstructor
 @Entity
 public class CompanyModel implements Serializable {

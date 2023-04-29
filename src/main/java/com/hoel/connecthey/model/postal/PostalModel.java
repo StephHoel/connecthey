@@ -2,16 +2,11 @@ package com.hoel.connecthey.model.postal;
 
 import java.io.Serializable;
 
-import javax.persistence.Entity;
-
 import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
 
-@Data
-@NoArgsConstructor
 @AllArgsConstructor
-@Entity
+@Getter
 public class PostalModel implements Serializable {
    private static final long serialVersionUID = 1L;
 
@@ -21,5 +16,9 @@ public class PostalModel implements Serializable {
    private String bairro;
    private String logradouro;
    private String aux;
+
+   
+
+   
 
 }
