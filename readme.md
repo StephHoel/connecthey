@@ -16,9 +16,9 @@ Com o Connect Hey você pode conectar sua empresa com os fornecedores que você 
 <!--
 1. Requisitos 
 a. CRUD de todas as entidades (Front-end e Back-end) 
-b. Uma empresa pode ter mais de um fornecedor 
-c. Um fornecedor pode trabalhar para mais de uma empresa 
-d. O CNPJ e CPF deve ser um valor único 
+(b). Uma empresa pode ter mais de um fornecedor 
+(c). Um fornecedor pode trabalhar para mais de uma empresa 
+(d). O CNPJ e CPF deve ser um valor único 
 e. Caso o fornecedor seja pessoa física, também é necessário cadastrar o RG e a data de nascimento 
 f. Caso a empresa seja do Paraná, não permitir cadastrar um fornecedor pessoa física menor de idade 
 g. A listagem de fornecedores deverá conter filtros por Nome e CPF/CNPJ 
