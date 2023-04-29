@@ -121,15 +121,14 @@ public class SupplierServiceTest extends SharedService {
       verify(repository, times(1)).delete(any());
    }
 
-   // @Test
-   // void update() {
-   // SupplierModel task = list.get(0);
-   // task.setIsCompleted(true);
-   // task.setCompletedAt(LocalDateTime.now());
-   // when(repository.save(task)).thenReturn(task);
-   // SupplierModel response = service.update(task);
-   // Assertions.assertEquals(task.getIsCompleted(), response.getIsCompleted());
-   // verify(repository, times(1)).save(any());
-   // }
+   @Test
+   void update() {
+   SupplierModel supplier = list.get(0);
+   supplier.setUpdatedAt(LocalDateTime.now());
+   when(repository.save(supplier)).thenReturn(supplier);
+   SupplierModel response = service.update(supplier);
+   Assertions.assertEquals(supplier.getUpdatedAt(), response.getUpdatedAt());
+   verify(repository, times(1)).save(any());
+   }
 
 }
