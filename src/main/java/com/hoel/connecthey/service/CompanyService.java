@@ -14,18 +14,16 @@ import com.hoel.connecthey.model.CompanyModel;
 import com.hoel.connecthey.repository.CompanyRepository;
 
 @Service
-public class CompanyService {
+public class CompanyService extends SharedService {
    @Autowired
    private CompanyRepository repository;
-
-   SharedService sharedService;
 
    // create
    public CompanyModel create(CompanyModel company) {
       company.setCreatedAt(LocalDateTime.now());
       company.setUpdatedAt(LocalDateTime.now());
       
-      sharedService.getPostal(company.getPostalCompany());
+      getPostal(company.getPostalCompany());
 
       return this.repository.save(company);
    }
