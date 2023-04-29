@@ -33,6 +33,14 @@ public class CompanyService extends SharedService {
       return repository.findAll();
    }
 
+   public List<CompanyModel> findAllByName(String name) {
+      return repository.findAllByName(name);
+   }
+
+   public List<CompanyModel> findAllByDoc(String doc) {
+      return repository.findAllByDoc(doc);
+   }
+
    public CompanyModel findById(UUID id) {
       return repository.findById(id)
             .orElseThrow(() -> new ResourceNotFound(ErrorResponse.CompanyNotFoundId.getText() + id));
