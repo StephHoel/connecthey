@@ -7,7 +7,7 @@ public class InvalidInput extends RuntimeException {
    @Serial
    private static final long serialVersionUID = 7783074921912303615L;
 
-   public InvalidInput(String message) {
+   public InvalidInput(String message) {      
       super(message);
    }
 
