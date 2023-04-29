@@ -109,9 +109,25 @@ public class SupplierServiceTest extends SharedService {
    @Test
    void findById() {
       when(repository.findById(any())).thenReturn(Optional.ofNullable(list.get(0)));
-      SupplierModel task = service.findById(list.get(0).getIdSupplier());
-      Assertions.assertEquals(task, list.get(0));
+      SupplierModel supplier = service.findById(list.get(0).getIdSupplier());
+      Assertions.assertEquals(supplier, list.get(0));
       verify(repository, times(1)).findById(any());
+   }
+
+   @Test
+   void findAllByName() {
+      when(repository.findAllByName(any())).thenReturn(list);
+      List<SupplierModel> suppliers = service.findAllByName(list.get(0).getNameSupplier());
+      Assertions.assertEquals(suppliers, list);
+      verify(repository, times(1)).findAllByName(any());
+   }
+
+   @Test
+   void findAllByDoc() {
+      when(repository.findAllByDoc(any())).thenReturn(list);
+      List<SupplierModel> suppliers = service.findAllByDoc(list.get(0).getCnpjCpfSupplier());
+      Assertions.assertEquals(suppliers, list);
+      verify(repository, times(1)).findAllByDoc(any());
    }
 
    @Test

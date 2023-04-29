@@ -106,6 +106,22 @@ public class CompanyServiceTest extends SharedService {
    }
 
    @Test
+   void findAllByName() {
+      when(repository.findAllByName(any())).thenReturn(list);
+      List<CompanyModel> company = service.findAllByName(list.get(0).getFantasyNameCompany());
+      Assertions.assertEquals(company, list);
+      verify(repository, times(1)).findAllByName(any());
+   }
+
+   @Test
+   void findAllByDoc() {
+      when(repository.findAllByDoc(any())).thenReturn(list);
+      List<CompanyModel> company = service.findAllByDoc(list.get(0).getCnpjCompany());
+      Assertions.assertEquals(company, list);
+      verify(repository, times(1)).findAllByDoc(any());
+   }
+
+   @Test
    void delete() {
       doNothing().when(repository).delete(any());
       service.delete(list.get(0));
