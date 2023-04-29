@@ -34,4 +34,3 @@ build/
 
 ### Others ###
 /src/main/resources/secret.properties
-/src/test/
