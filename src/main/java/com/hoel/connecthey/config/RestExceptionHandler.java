@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 public class RestExceptionHandler {
    public ResponseEntity<ErrorMessage> handle(Exception ex, HttpStatus statusCode, String description) {
       ErrorMessage message = new ErrorMessage(statusCode, LocalDateTime.now(), ex.getMessage(), description);
-      //statusCode, LocalDateTime.now(), ex.getMessage(), description
+      // statusCode, LocalDateTime.now(), ex.getMessage(), description
       ex.printStackTrace();
       return new ResponseEntity<>(message, message.getStatusCode());
    }
