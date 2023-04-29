@@ -16,10 +16,12 @@ import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Table(name = "COMPANY_SUPPLIER")
 @AllArgsConstructor
+@NoArgsConstructor
 @Entity
 public class CompanySupplierModel implements Serializable {
    private static final long serialVersionUID = 1L;
