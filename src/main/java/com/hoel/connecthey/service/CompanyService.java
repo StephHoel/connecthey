@@ -7,6 +7,7 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.hoel.connecthey.enums.ErrorResponse;
 import com.hoel.connecthey.exception.InvalidInput;
 import com.hoel.connecthey.exception.ResourceNotFound;
 import com.hoel.connecthey.model.CompanyModel;
@@ -17,10 +18,14 @@ public class CompanyService {
    @Autowired
    private CompanyRepository repository;
 
+   SharedService sharedService;
+
    // create
    public CompanyModel create(CompanyModel company) {
       company.setCreatedAt(LocalDateTime.now());
       company.setUpdatedAt(LocalDateTime.now());
+      
+      sharedService.getPostal(company.getPostalCompany());
 
       return this.repository.save(company);
    }
@@ -32,7 +37,7 @@ public class CompanyService {
 
    public CompanyModel findById(UUID id) {
       return repository.findById(id)
-            .orElseThrow(() -> new ResourceNotFound("Company not found with ID: " + id));
+            .orElseThrow(() -> new ResourceNotFound(ErrorResponse.CompanyNotFoundId.getText() + id));
    }
 
    // update
@@ -54,7 +59,7 @@ public class CompanyService {
    // support
    private void hasId(CompanyModel company) {
       if (company.getIdCompany() == null) {
-         throw new InvalidInput("There is no ID");
+         throw new InvalidInput(ErrorResponse.NoId.getText());
       }
    }
 
