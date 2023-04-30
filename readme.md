@@ -35,17 +35,13 @@ O que foi utilizado:
 - [ ] Listagem de Fornecedor por Nome ou CPF/CNPJ
 - [ ] Comunicação entre Empresa e Fornecedor internamente
 
-
 <!--
-1. Requisitos 
-a. CRUD de todas as entidades (Front-end e Back-end) 
-e. Caso o fornecedor seja pessoa física, também é necessário cadastrar o RG e a data de nascimento 
-(f). Caso a empresa seja do Paraná, não permitir cadastrar um fornecedor pessoa física menor de idade 
-h. Validar CEP na API http://cep.la/api, a validação também deve ser feita no Front-end 
-i. Pode adicionar novas colunas, classes, heranças, entidades de relacionamentos e demais recursos que julgar necessário
-
+1. Requisitos
+a. CRUD de todas as entidades (Front-end e Back-end)
+e. Caso o fornecedor seja pessoa física, também é necessário cadastrar o RG e a data de nascimento
+(f). Caso a empresa seja do Paraná, não permitir cadastrar um fornecedor pessoa física menor de idade
+h. Validar CEP na API http://cep.la/api, a validação também deve ser feita no Front-end
 -->
-
 
 ## Documentação da API
 
