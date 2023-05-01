@@ -11,6 +11,8 @@
 
 🔹 [Funcionalidades](#funcionalidades)
 
+🔹 [Telas](#telas)
+
 🔹 [Documentação da API](#documentação-da-api)
 
 🔹 [Autores](#autores)
@@ -28,12 +30,11 @@ O que foi utilizado:
 
 ## Funcionalidades
 
-- [ ] Cadastro de Empresa
+- [x] Cadastro de Empresa
 - [ ] Cadastro de Fornecedor
 - [ ] Perfil com possibilidade de edição das informações e exclusão de cadastro
 - [ ] Listagem de Empresas por Nome
 - [ ] Listagem de Fornecedor por Nome ou CPF/CNPJ
-- [ ] Comunicação entre Empresa e Fornecedor internamente
 
 <!--
 1. Requisitos
@@ -42,6 +43,13 @@ e. Caso o fornecedor seja pessoa física, também é necessário cadastrar o RG 
 (f). Caso a empresa seja do Paraná, não permitir cadastrar um fornecedor pessoa física menor de idade
 h. Validar CEP na API http://cep.la/api, a validação também deve ser feita no Front-end
 -->
+
+## Telas
+
+#### Home
+<p align="center">
+  <img src=".github/home.png" width="100%">
+</p>
 
 ## Documentação da API
 
@@ -86,7 +94,7 @@ h. Validar CEP na API http://cep.la/api, a validação também deve ser feita no
   postalSupplier    string
                     pattern: ^[0-9]{2}[.]?[0-9]{3}[-]?[0-9]{3}$
   emailSupplier     string
-  rgSupplier	      string
+  rgSupplier        string
                     pattern: ^[0-9]{2}[.]?[0-9]{3}[.]?[0-9]{3}[-]?[0-9]{1}$
   birthdaySupplier  string($date)
   createdAt         string($date-time)
@@ -97,7 +105,7 @@ h. Validar CEP na API http://cep.la/api, a validação também deve ser feita no
 
 ```http
   idCompany	          string($uuid)
-  cnpjCompany	      string
+  cnpjCompany         string
                       pattern: ^([0-9]{2}[.]?[0-9]{3}[.]?[0-9]{3}[/]?[0-9]{4}[-]?[0-9]{2})$|^([0-9]{3}[.]?[0-9]{3}[.]?[0-9]{3}[-]?[0-9]{2})$
   fantasyNameCompany  string
   postalCompany	      string
