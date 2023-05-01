@@ -33,8 +33,9 @@ O que foi utilizado:
 - [x] Cadastro de Empresa
 - [ ] Cadastro de Fornecedor
 - [ ] Perfil com possibilidade de edição das informações e exclusão de cadastro
-- [ ] Listagem de Empresas por Nome
-- [ ] Listagem de Fornecedor por Nome ou CPF/CNPJ
+- [x] Listagem de Empresas por Nome
+- [x] Listagem de Fornecedor por Nome
+- [ ] Listagem de Fornecedor por CPF/CNPJ
 
 <!--
 1. Requisitos
@@ -51,14 +52,24 @@ h. Validar CEP na API http://cep.la/api, a validação também deve ser feita no
   <img src=".github/home.png" width="100%">
 </p>
 
+#### Procurar Empresas
+<p align="center">
+  <img src=".github/companies.png" width="100%">
+</p>
+
+#### Procurar Fornecedores
+<p align="center">
+  <img src=".github/suppliers.png" width="100%">
+</p>
+
 ## Documentação da API
 
 #### Fornecedor (suppplier)
 
 ```http
   GET    /api/supplier          Retornar todos
-  GET    /api/supplier/${name}  Retornar todos que contém nome informado
-  GET    /api/supplier/${doc}   Retornar todos que contém CPNJ ou CPF informado
+  GET    /api/supplier/name/${name}  Retornar todos que contém nome informado
+  GET    /api/supplier/doc/${doc}   Retornar todos que contém CPNJ ou CPF informado
   GET    /api/supplier/${id}    Retornar um
   POST   /api/supplier          Criar
   PUT    /api/supplier          Atualizar
@@ -69,8 +80,8 @@ h. Validar CEP na API http://cep.la/api, a validação também deve ser feita no
 
 ```http
   GET    /api/company           Retornar todos
-  GET    /api/supplier/${name}  Retornar todos que contém nome informado
-  GET    /api/supplier/${doc}   Retornar todos que contém CPNJ ou CPF informado
+  GET    /api/supplier/name/${name}  Retornar todos que contém nome informado
+  GET    /api/supplier/doc/${doc}   Retornar todos que contém CPNJ ou CPF informado
   GET    /api/company/${id}     Retornar um
   POST   /api/company           Criar
   PUT    /api/company           Atualizar
@@ -115,6 +126,6 @@ h. Validar CEP na API http://cep.la/api, a validação também deve ser feita no
   updatedAt	          string($date-time)
 ```
 
-## Autores
+## Devs
 
 - [Steph Hoel](https://www.github.com/StephHoel)
