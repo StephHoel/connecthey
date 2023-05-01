@@ -21,6 +21,10 @@
   font-family: "Roboto", sans-serif;
 }
 
+.no-border-last:nth-last-child(2),
+.no-border-last:nth-last-child(1){
+  border: none;
+}
 
 input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button { 

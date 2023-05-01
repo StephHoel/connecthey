@@ -1,12 +1,10 @@
-/* eslint-disable @next/next/no-img-element */
-import Image from 'next/image'
-
 import { FormEvent, useState } from 'react';
+import { useRouter } from 'next/router';
 
 import { Input } from '@/components/Input'
+import { Header } from '@/components/Header';
 
-import { api } from '../lib/axios'
-import { useRouter } from 'next/router';
+import { api } from '@/lib/axios'
 
 export default function Home() {
   const [cnpj, setCnpj] = useState('')
@@ -19,54 +17,56 @@ export default function Home() {
   async function register(event: FormEvent) {
     event.preventDefault()
 
-    console.log({ cnpj, name, cep, email })
+    // console.log({ cnpj, name, cep, email })
 
     try {
-      const response = await api.post('/api/company', {
+      const response = await api.post('/company', {
         cnpjCompany: cnpj,
         fantasyNameCompany: name,
         postalCompany: cep,
         emailCompany: email,
       });
 
-      const status = response.data.message
+      const status = response.status
 
-      if (status == 'User registered successfully') {
-        alert('Usuário cadastrado com sucesso!\nFaça o login para acessar sua conta!')
+      // console.log(status)
+
+      if (status == 201) {
+        alert('Sua empresa foi cadastrada com sucesso!')
+
+        setCnpj('')
+        setName('')
+        setCep('')
+        setEmail('')
+
         router.push('/')
-      } else {
-        alert('ERRO! Falha ao tentar registrar. Não sabe o que aconteceu, mas você pode tentar novamente mais tarde.')
       }
-    } catch (error) {
+      else {
+        alert('ERRO! Falha ao tentar cadastrar sua empresa.\nNão sabemos o que aconteceu, mas você pode tentar novamente mais tarde')
+      }
+
+    } catch (error: any) {
+      // console.log("Error: " + error.response.data.message)
       console.log(error)
-      alert('Falha ao tentar registrar, tente novamente!')
+
+      if (error.response.data.message == "This Zip Code is not valid") {
+        alert('Este CEP não é válido e não conseguimos registrar sua empresa, tente novamente por favor!')
+      } else {
+        alert('Algum erro não permitiu registrarmos sua empresa, tente novamente por favor!')
+      }
+
     }
   }
 
   return (
-    <div className='bg-gradient-to-r from-violet-400 to-violet-500 
-                    w-screen h-full min-h-screen bg-cover pb-8'>
-      {/* top */}
-      <div className='w-full h-28 bg-violet-600 opacity-70 space-x-[30%] 
-                      py-4 grid grid-flow-col text-gray-300'>
-        <div className='text-left ml-12 text-5xl self-center'>
-          Connect Hey
-        </div>
-        <div className='grid grid-flow-col text-right items-center'>
-          <div className='mr-28 space-x-8 flex'>
-            <p><a onClick={() => { router.push("companies") }} className='cursor-pointer hover:text-gray-100 hover:font-semibold'>Procurar Empresas</a></p>
-            <p>|</p>
-            <p><a onClick={() => { router.push("suppliers") }} className='cursor-pointer hover:text-gray-100 hover:font-semibold'>Procurar Fornecedores</a></p>
-          </div>
-        </div>
-      </div>
+    <div>
+      <Header />
 
-      {/* main */}
       <div className='w-[80%] mx-auto my-14 text-center text-6xl text-gray-700'>
         Aqui é onde você encontra empresas que podem ajudar seu negócio de alguma forma!
       </div>
 
-      <div className='w-1/2 min-w-[450px] m-auto backdrop-opacity-50 bg-white/30 
+      <div className='w-fit m-auto backdrop-opacity-50 bg-white/30 
                       py-4 px-8 text-gray-700 rounded-xl'>
         <div className='m-4 text-center text-4xl'>
           Cadastre sua empresa!
