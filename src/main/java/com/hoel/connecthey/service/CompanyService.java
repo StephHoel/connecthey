@@ -23,6 +23,11 @@ public class CompanyService extends SharedService {
       company.setCreatedAt(LocalDateTime.now());
       company.setUpdatedAt(LocalDateTime.now());
       company.setIdCompany(UUID.randomUUID());
+
+      company.setCnpjCompany(company.getCnpjCompany().trim());
+      company.setEmailCompany(company.getEmailCompany().trim());
+      company.setFantasyNameCompany(company.getFantasyNameCompany().trim());
+      company.setPostalCompany(company.getPostalCompany().trim());
       
       getPostal(company.getPostalCompany());
 

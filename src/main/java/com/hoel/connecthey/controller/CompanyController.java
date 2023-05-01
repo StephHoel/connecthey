@@ -51,13 +51,13 @@ public class CompanyController {
       return new ResponseEntity<>(service.findById(id), HttpStatus.OK);
    }
 
-   @GetMapping("/company/{name}")
+   @GetMapping("/company/name/{name}")
    @Operation(summary = "company", description = "find a company order by name")
    public ResponseEntity<List<CompanyModel>> getAllByName(@PathVariable(value = "name") String name) {
       return new ResponseEntity<>(service.findAllByName(name), HttpStatus.OK);
    }
 
-   @GetMapping("/company/{doc}")
+   @GetMapping("/company/doc/{doc}")
    @Operation(summary = "company", description = "find a company order by document")
    public ResponseEntity<List<CompanyModel>> getAllByDoc(@PathVariable(value = "doc") String doc) {
       return new ResponseEntity<>(service.findAllByDoc(doc), HttpStatus.OK);

@@ -27,10 +27,17 @@ public class SupplierService extends SharedService {
       supplier.setCreatedAt(LocalDateTime.now());
       supplier.setUpdatedAt(LocalDateTime.now());
       supplier.setIdSupplier(UUID.randomUUID());
-      
-      supplier.setCnpjCpfSupplier(clear(supplier.getCnpjCpfSupplier()));
-      supplier.setPostalSupplier(clear(supplier.getPostalSupplier()));
-      supplier.setRgSupplier(clear(supplier.getRgSupplier()));
+
+      supplier.setCnpjCpfSupplier(clear(supplier.getCnpjCpfSupplier().trim()));
+      supplier.setPostalSupplier(clear(supplier.getPostalSupplier().trim()));
+
+      if (supplier.getRgSupplier() != null)
+         supplier.setRgSupplier(clear(supplier.getRgSupplier().trim()));
+
+      supplier.setEmailSupplier(supplier.getEmailSupplier().trim());
+      supplier.setNameSupplier(supplier.getNameSupplier().trim());
+
+      getPostal(supplier.getPostalSupplier());
 
       // if supplier has CPF
       if (!supplier.getIsCnpjSupplier()) {
@@ -44,7 +51,7 @@ public class SupplierService extends SharedService {
          postalModel = getPostal(supplier.getPostalSupplier());
 
          // if supplier is postal UF = PR
-         if (postalModel == null){
+         if (postalModel == null) {
             throw new InvalidInput("Postal is null");
          } else if (postalModel.getUf() == "PR"
                && LocalDate.now().isBefore(supplier.getBirthdaySupplier().plusYears(18))) {
@@ -64,7 +71,7 @@ public class SupplierService extends SharedService {
    public List<SupplierModel> findAllByName(String name) {
       return repository.findAllByName(name);
    }
-   
+
    public List<SupplierModel> findAllByDoc(String doc) {
       return repository.findAllByDoc(doc);
    }
