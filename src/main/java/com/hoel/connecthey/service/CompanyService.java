@@ -22,6 +22,7 @@ public class CompanyService extends SharedService {
    public CompanyModel create(CompanyModel company) {
       company.setCreatedAt(LocalDateTime.now());
       company.setUpdatedAt(LocalDateTime.now());
+      company.setIdCompany(UUID.randomUUID());
       
       getPostal(company.getPostalCompany());
 

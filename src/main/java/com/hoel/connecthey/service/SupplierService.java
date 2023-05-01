@@ -26,6 +26,7 @@ public class SupplierService extends SharedService {
    public SupplierModel create(SupplierModel supplier) {
       supplier.setCreatedAt(LocalDateTime.now());
       supplier.setUpdatedAt(LocalDateTime.now());
+      supplier.setIdSupplier(UUID.randomUUID());
       
       supplier.setCnpjCpfSupplier(clear(supplier.getCnpjCpfSupplier()));
       supplier.setPostalSupplier(clear(supplier.getPostalSupplier()));
