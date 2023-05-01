@@ -41,9 +41,4 @@ public class CompanySupplierModel implements Serializable {
 
    @Column(name = "CREATED_AT", nullable = false)
    private LocalDateTime createdAt;
-
-   // para criar relacionamentos:
-   // @ManyToOne
-   // @JoinColumn(name = "forumId")
-   // private Forum forum;
 }
