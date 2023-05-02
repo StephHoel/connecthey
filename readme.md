@@ -31,7 +31,7 @@ O que foi utilizado:
 ## Funcionalidades
 
 - [x] Cadastro de Empresa
-- [ ] Cadastro de Fornecedor
+- [x] Cadastro de Fornecedor
 - [ ] Perfil com possibilidade de edição das informações e exclusão de cadastro
 - [x] Listagem de Empresas por Nome
 - [x] Listagem de Fornecedor por Nome
