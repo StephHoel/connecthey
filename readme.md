@@ -10,9 +10,9 @@
 🔹 [Descrição do projeto](#descrição-do-projeto)
 
 🔹 [Funcionalidades](#funcionalidades)
-
+<!--
 🔹 [Telas](#telas)
-
+-->
 🔹 [Documentação da API](#documentação-da-api)
 
 🔹 [Autores](#autores)
