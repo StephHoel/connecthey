@@ -24,8 +24,8 @@ Com o Connect Hey você pode conectar sua empresa com os fornecedores que você 
 Neste projeto você vai encontrar uma API que será consumida por uma aplicação web que conecta empresas à fornecedores.
 
 O que foi utilizado:
-- Backend: Java Spring Boot
-- Frontend: React
+- Back-end: Spring Boot, Java
+- Front-end: ReactJS, Typescript, TailWindCss
 - Banco de Dados do Azure para servidor flexível do PostgreSQL
 
 ## Funcionalidades
@@ -40,7 +40,6 @@ O que foi utilizado:
 <!--
 1. Requisitos
 a. CRUD de todas as entidades (Front-end e Back-end)
-e. Caso o fornecedor seja pessoa física, também é necessário cadastrar o RG e a data de nascimento
 (f). Caso a empresa seja do Paraná, não permitir cadastrar um fornecedor pessoa física menor de idade
 h. Validar CEP na API http://cep.la/api, a validação também deve ser feita no Front-end
 -->
