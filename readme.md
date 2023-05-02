@@ -44,7 +44,7 @@ e. Caso o fornecedor seja pessoa física, também é necessário cadastrar o RG 
 (f). Caso a empresa seja do Paraná, não permitir cadastrar um fornecedor pessoa física menor de idade
 h. Validar CEP na API http://cep.la/api, a validação também deve ser feita no Front-end
 -->
-
+<!-- 
 ## Telas
 
 #### Home
@@ -60,7 +60,7 @@ h. Validar CEP na API http://cep.la/api, a validação também deve ser feita no
 #### Procurar Fornecedores
 <p align="center">
   <img src=".github/suppliers.png" width="100%">
-</p>
+</p> -->
 
 ## Documentação da API
 
