@@ -4,8 +4,7 @@ export default function Document() {
   return (
     <Html lang="pt-br">
       <Head />
-      <body className='bg-gradient-to-r from-violet-400 to-violet-500 
-                      w-screen h-full min-h-screen bg-cover pb-8'>
+      <body className='bg-bg-all bg-cover bg-no-repeat overflow-x-hidden w-screen h-full min-h-screen pb-8'>
         <Main />
         <NextScript />
       </body>

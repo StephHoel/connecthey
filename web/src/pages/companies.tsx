@@ -8,6 +8,8 @@ import ScrollToTop from '@/components/ToTop';
 import { api } from "@/lib/axios";
 import { doc, zip } from '@/lib/format';
 import { Company } from '@/lib/model';
+import { BgBlur } from "@/components/BgBlur";
+import { GeneralError, SearchFailed } from "@/lib/alert";
 
 export default function Companies() {
 
@@ -32,7 +34,7 @@ export default function Companies() {
             console.log(error)
             setIsLoaded(false)
 
-            alert('Ocorreu algum erro inexperado, tente novamente por favor!')
+            alert(GeneralError())
 
          }
       };
@@ -49,6 +51,7 @@ export default function Companies() {
       setIsLoaded(false)
 
       let uri = ""
+      const type = "empresas"
 
       if (searchCompany != "") {
          uri = `/company/name/${searchCompany.toLowerCase()}`
@@ -64,13 +67,13 @@ export default function Companies() {
          if (status == 200) {
             setListCompany(null)
             setListCompany(response.data)
-            
+
             setSearchCompany("")
 
             setIsLoaded(true)
          }
          else {
-            alert('Falha ao tentar procurar por empresas\nNão sabemos o que aconteceu, mas você pode tentar novamente')
+            alert(SearchFailed(type))
          }
 
       } catch (error: any) {
@@ -78,7 +81,7 @@ export default function Companies() {
          console.log(error)
 
 
-         alert('Falha ao tentar procurar por empresas.\nNão sabemos o que aconteceu, mas você pode tentar novamente')
+         alert(SearchFailed(type))
 
       }
    }
@@ -87,7 +90,7 @@ export default function Companies() {
       <div>
          <Header />
 
-         <div className="mx-auto my-8 w-fit p-4 rounded-lg backdrop-opacity-50 bg-white/30 flex-row">
+         <BgBlur>
             <form onSubmit={search}>
 
                <div className="flex items-center">
@@ -110,40 +113,42 @@ export default function Companies() {
                </div>
 
             </form>
-         </div>
+         </BgBlur>
 
-         <div className="w-fit max-w-3/4 mx-auto my-8 text-gray-600 grid grid-cols-2 gap-4">
-            {isLoaded && listCompany.length > 0 ?
-               listCompany.map((item: Company, index: any) => (
-                  <div
-                     key={index}
-                     className="col-span-1 py-4 px-8 border-b-2 border-b-gray-400 no-border-last"
-                  >
-                     <p className="text-4xl">
-                        {item.fantasyNameCompany}
-                     </p>
-                     <p className="px-4 text-2xl">
-                        CNPJ: {doc(item.cnpjCompany)}
-                     </p>
-                     <p className="px-4 text-2xl">
-                        CEP: {zip(item.postalCompany)}
-                     </p>
-                     <p className="px-4 text-2xl">
-                        E-mail: {item.emailCompany}
-                     </p>
+         <BgBlur>
+            <div className="w-fit max-w-3/4 mx-auto my-8 text-gray-600 grid grid-cols-2 gap-4">
+               {isLoaded && listCompany.length > 0 ?
+                  listCompany.map((item: Company, index: any) => (
+                     <div
+                        key={index}
+                        className="col-span-1 py-4 px-8 border-b-2 border-b-gray-400 no-border-last"
+                     >
+                        <p className="text-4xl">
+                           {item.fantasyNameCompany}
+                        </p>
+                        <p className="px-4 text-2xl">
+                           CNPJ: {doc(item.cnpjCompany)}
+                        </p>
+                        <p className="px-4 text-2xl">
+                           CEP: {zip(item.postalCompany)}
+                        </p>
+                        <p className="px-4 text-2xl">
+                           E-mail: {item.emailCompany}
+                        </p>
 
+                     </div>
+                  ))
+                  :
+                  <div className='text-6xl text-center col-span-2 my-12'>
+                     {listCompany != null ?
+                        "Infelizmente ainda não temos empresas!"
+                        :
+                        "Carregando..."
+                     }
                   </div>
-               ))
-               :
-               <div className='text-6xl text-center col-span-2 my-12'>
-                  {listCompany != null ?
-                     "Infelizmente ainda não temos empresas!"
-                     :
-                     "Carregando..."
-                  }
-               </div>
-            }
-         </div>
+               }
+            </div>
+         </BgBlur>
 
          <ScrollToTop />
       </div>

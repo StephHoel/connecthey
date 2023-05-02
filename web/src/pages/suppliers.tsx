@@ -8,6 +8,8 @@ import ScrollToTop from '@/components/ToTop';
 import { api } from "@/lib/axios";
 import { doc, zip } from '@/lib/format';
 import { Supplier } from '@/lib/model';
+import { BgBlur } from "@/components/BgBlur";
+import { GeneralError, SearchFailed } from "@/lib/alert";
 
 export default function Suppliers() {
 
@@ -31,7 +33,7 @@ export default function Suppliers() {
             // console.log("Error: " + error.response.data.message)
             console.log(error)
 
-            alert('Algum erro não permitiu que listássemos os fornecedores, tente novamente por favor!')
+            alert(GeneralError())
 
          }
 
@@ -51,6 +53,7 @@ export default function Suppliers() {
       setIsLoaded(false)
 
       let uri = ""
+      const type = "fornecedores"
 
       if (searchSupplier != "") {
          uri = `/supplier/name/${searchSupplier.toLowerCase()}`
@@ -66,20 +69,20 @@ export default function Suppliers() {
          if (status == 200) {
             setListSupplier(null)
             setListSupplier(response.data)
-            
+
             setSearchSupplier("")
 
             setIsLoaded(true)
          }
          else {
-            alert('Falha ao tentar procurar por fornecedores\nNão sabemos o que aconteceu, mas você pode tentar novamente')
+            alert(SearchFailed(type))
          }
 
       } catch (error) {
          // console.log("Error: " + error.response.data.message)
          console.log(error)
 
-         alert('Falha ao tentar procurar por fornecedores.\nNão sabemos o que aconteceu, mas você pode tentar novamente')
+         alert(SearchFailed(type))
 
       }
    }
@@ -88,7 +91,7 @@ export default function Suppliers() {
       <div>
          <Header />
 
-         <div className="mx-auto my-8 w-fit p-4 rounded-lg backdrop-opacity-50 bg-white/30 flex-row">
+         <BgBlur>
             <form onSubmit={search}>
 
                <div className="flex items-center">
@@ -111,48 +114,50 @@ export default function Suppliers() {
                </div>
 
             </form>
-         </div>
+         </BgBlur>
 
-         <div className="w-fit max-w-3/4 mx-auto my-8 text-gray-600 grid grid-cols-2 gap-4">
-            {isLoaded && listSupplier.length > 0 ?
-               listSupplier.map((item: Supplier, index: any) => (
-                  <div
-                     key={index}
-                     className="col-span-1 py-4 px-8 border-b-2 border-b-gray-400 no-border-last"
-                  >
-                     <p
-                        className="text-4xl"
+         <BgBlur>
+            <div className="w-fit max-w-3/4 mx-auto my-8 text-gray-600 grid grid-cols-2 gap-4">
+               {isLoaded && listSupplier.length > 0 ?
+                  listSupplier.map((item: Supplier, index: any) => (
+                     <div
+                        key={index}
+                        className="col-span-1 py-4 px-8 border-b-2 border-b-gray-400 no-border-last"
                      >
-                        {item.nameSupplier}
-                     </p>
-                     <p
-                        className="px-4 text-2xl"
-                     >
-                        CNPJ/CPF: {doc(item.cnpjCpfSupplier)}
-                     </p>
-                     <p
-                        className="px-4 text-2xl"
-                     >
-                        CEP: {zip(item.postalSupplier)}
-                     </p>
-                     <p
-                        className="px-4 text-2xl"
-                     >
-                        E-mail: {item.emailSupplier}
-                     </p>
+                        <p
+                           className="text-4xl"
+                        >
+                           {item.nameSupplier}
+                        </p>
+                        <p
+                           className="px-4 text-2xl"
+                        >
+                           CNPJ/CPF: {doc(item.cnpjCpfSupplier)}
+                        </p>
+                        <p
+                           className="px-4 text-2xl"
+                        >
+                           CEP: {zip(item.postalSupplier)}
+                        </p>
+                        <p
+                           className="px-4 text-2xl"
+                        >
+                           E-mail: {item.emailSupplier}
+                        </p>
 
+                     </div>
+                  ))
+                  :
+                  <div className='text-6xl text-center col-span-2 my-12'>
+                     {listSupplier != null ?
+                        "Infelizmente ainda não temos fornecedores!"
+                        :
+                        "Carregando..."
+                     }
                   </div>
-               ))
-               :
-               <div className='text-6xl text-center col-span-2 my-12'>
-                  {listSupplier != null ?
-                     "Infelizmente ainda não temos fornecedores!"
-                     :
-                     "Carregando..."
-                  }
-               </div>
-            }
-         </div>
+               }
+            </div>
+         </BgBlur>
 
          <ScrollToTop />
       </div>

@@ -5,6 +5,9 @@ import { Input } from '@/components/Input'
 import { Header } from '@/components/Header';
 
 import { api } from '@/lib/axios'
+import { BgBlur } from '@/components/BgBlur';
+import { Button } from '@/components/FormButton';
+import { RegisterError, RegisterErrorZip, RegisterFailed, RegisterSuccefully } from '@/lib/alert';
 
 export default function Home() {
   const [cnpj, setCnpj] = useState('')
@@ -16,6 +19,8 @@ export default function Home() {
 
   async function register(event: FormEvent) {
     event.preventDefault()
+
+    const type = "empresa"
 
     // console.log({ cnpj, name, cep, email })
 
@@ -32,7 +37,7 @@ export default function Home() {
       // console.log(status)
 
       if (status == 201) {
-        alert('Sua empresa foi cadastrada com sucesso!')
+        alert(RegisterSuccefully(type))
 
         setCnpj('')
         setName('')
@@ -42,7 +47,7 @@ export default function Home() {
         router.push('/')
       }
       else {
-        alert('ERRO! Falha ao tentar cadastrar sua empresa.\nNão sabemos o que aconteceu, mas você pode tentar novamente mais tarde')
+        alert(RegisterFailed(type))
       }
 
     } catch (error: any) {
@@ -50,9 +55,9 @@ export default function Home() {
       console.log(error)
 
       if (error.response.data.message == "This Zip Code is not valid") {
-        alert('Este CEP não é válido e não conseguimos registrar sua empresa, tente novamente por favor!')
+        alert(RegisterErrorZip(type))
       } else {
-        alert('Algum erro não permitiu registrarmos sua empresa, tente novamente por favor!')
+        alert(RegisterError(type))
       }
 
     }
@@ -62,16 +67,15 @@ export default function Home() {
     <div>
       <Header />
 
-      <div className='w-[80%] mx-auto my-14 text-center text-6xl text-gray-700'>
-        Aqui é onde você encontra empresas que podem ajudar seu negócio de alguma forma!
-      </div>
-
-      <div className='w-fit m-auto backdrop-opacity-50 bg-white/30 
-                      py-4 px-8 text-gray-700 rounded-xl'>
-        <div className='m-4 text-center text-4xl'>
-          Cadastre sua empresa!
+      <BgBlur>
+        <div className='w-[900px] mx-auto mt-8 mb-14 text-center text-6xl text-gray-700'>
+          Aqui é onde você encontra empresas que podem ajudar seu negócio de alguma forma
         </div>
-        <form onSubmit={register} className='grid gap-8'>
+
+        <div className='m-4 text-center text-4xl'>
+          Cadastre sua empresa
+        </div>
+        <form onSubmit={register} className='grid gap-8 pb-8'>
           <Input
             type='number'
             max={99999999999}
@@ -98,15 +102,10 @@ export default function Home() {
             onChange={event => setEmail(event.target.value)}
             value={email}
           />
-          <button
-            className='rounded-lg p-3 bg-violet-700 outline-none w-[40rem] mx-auto  text-gray-400
-            focus:border-violet-500 focus:border-solid focus:border-2 focus:rounded-lg
-            hover:bg-violet-500 hover:text-gray-800 hover:rounded-lg '
-          >
-            Enviar
-          </button>
+
+          <Button title="Enviar" />
         </form>
-      </div>
+      </BgBlur>
 
     </div>
   )

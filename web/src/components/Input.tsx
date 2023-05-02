@@ -13,7 +13,7 @@ export function Input({ title, ...rest }: InputHTMLAttributes<HTMLInputElement>)
 
          <input {...rest}
             required
-            placeholder={title == "CNPJ" ? "CNPJ (somente números)" : title == "Nome" ? "Nome Fantasia" : title == "CEP" ? "CEP (somente números)" : title}
+            placeholder={(title == "CNPJ" || title == "CPF" || title == "CEP") ? title + " (somente números)" : title == "Nome" ? "Nome Fantasia" : title}
             className='rounded-lg p-3 text-violet-700 outline-none w-[40rem]
                placeholder:px-2 placeholder:text-violet-400
                focus:outline-violet-500 focus:outline focus:outline-offset-0 focus:outline-4 focus:rounded-lg 
