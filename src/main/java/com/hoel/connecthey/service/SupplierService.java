@@ -37,8 +37,6 @@ public class SupplierService extends SharedService {
       supplier.setEmailSupplier(supplier.getEmailSupplier().trim());
       supplier.setNameSupplier(supplier.getNameSupplier().trim());
 
-      getPostal(supplier.getPostalSupplier());
-
       // if supplier has CPF
       if (!supplier.getIsCnpjSupplier()) {
 
