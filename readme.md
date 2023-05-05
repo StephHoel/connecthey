@@ -101,93 +101,94 @@ h. Validar CEP na API http://cep.la/api, a validação também deve ser feita no
 
 ### Caminhos
 
-| Fornecedor | (suppplier) |  |
-| - | - | - |
-| GET | `/api/supplier` | Retornar todos |
-| GET | `/api/supplier/name/${name}` | Retornar todos que contém nome informado |
-| GET | `/api/supplier/doc/${doc}` | Retornar todos que contém CPNJ ou CPF informado |
-| GET | `/api/supplier/${id}` | Retornar um |
-| POST | `/api/supplier` | Criar |
-| PUT | `/api/supplier` | Atualizar |
-| DELETE | `/api/supplier` | Deletar |
+| Fornecedor | (suppplier)                  |                                                |
+| ---------- | ---------------------------- | ---------------------------------------------- |
+| GET        | `/api/supplier`              | Retorna todos                                  |
+| GET        | `/api/supplier/name/${name}` | Retorna todos que contém nome informado        |
+| GET        | `/api/supplier/doc/${doc}`   | Retorna todos que contém CPNJ ou CPF informado |
+| GET        | `/api/supplier/${id}`        | Retorna 1                                      |
+| POST       | `/api/supplier`              | Cria                                           |
+| PUT        | `/api/supplier`              | Atualiza                                       |
+| DELETE     | `/api/supplier`              | Deleta                                         |
 
 
-| Empresas | (company) |  |
-| - | - | - |
-| GET | `/api/company` | Retornar todos |
-| GET | `/api/company/name/${name}` | Retornar todos que contém nome informado |
-| GET | `/api/company/doc/${doc}` | Retornar todos que contém CPNJ ou CPF informado |
-| GET | `/api/company/${id}` | Retornar um |
-| POST | `/api/company` | Criar |
-| PUT | `/api/company` | Atualizar |
-| DELETE | `/api/company` | Deletar |
+| Empresas | (company)                   |                                                |
+| -------- | --------------------------- | ---------------------------------------------- |
+| GET      | `/api/company`              | Retorna todos                                  |
+| GET      | `/api/company/name/${name}` | Retorna todos que contém nome informado        |
+| GET      | `/api/company/doc/${doc}`   | Retorna todos que contém CPNJ ou CPF informado |
+| GET      | `/api/company/${id}`        | Retorna 1                                      |
+| POST     | `/api/company`              | Cria                                           |
+| PUT      | `/api/company`              | Atualiza                                       |
+| DELETE   | `/api/company`              | Deleta                                         |
 
 
-| Usuários | (user) |  |
-| - | - | - |
-| GET | `/api/user/${user}/${pass}` | Retornar 1 ou nenhum |
-| POST | `/api/user` | Criar |
-| PUT | `/api/user` | Atualizar |
-| DELETE | `/api/user` | Deletar |
+| Usuários | (user)          |                          |
+| -------- | --------------- | ------------------------ |
+| POST     | `/api/user`     | Retorna se existe ou não |
+| POST     | `/api/user/new` | Cria                     |
+| PUT      | `/api/user`     | Atualiza                 |
+| DELETE   | `/api/user`     | Deleta                   |
 
 
 ### Definição
 
-| Parâmetro | Tipo | Descrição |
-| - | - | - |
-| `id` | `UUID` | **Obrigatório**. O ID do fornecedor ou companhia que você quer |
-| `name` | `String` | **Obrigatório**. O nome do fornecedor ou companhia que você quer |
-| `doc` | `String` | **Obrigatório**. O CNPJ/CPF do fornecedor ou companhia que você quer |
-| `usarname` | `String` | **Obrigatório**. O username que você quer verificar |
-| `password` | `String` | **Obrigatório**. A password que você quer verificar |
+| Parâmetro  | Tipo     | Descrição                                                            |
+| ---------- | -------- | -------------------------------------------------------------------- |
+| `id`       | `UUID`   | **Obrigatório**. O ID do fornecedor ou companhia que você quer       |
+| `name`     | `String` | **Obrigatório**. O nome do fornecedor ou companhia que você quer     |
+| `doc`      | `String` | **Obrigatório**. O CNPJ/CPF do fornecedor ou companhia que você quer |
+| `usarname` | `String` | **Obrigatório**. O username que você quer verificar                  |
+| `password` | `String` | **Obrigatório**. A password que você quer verificar                  |
 
 
 ### Schemas 
 
-| Fornecedor ||
-| - | - |
-| idSupplier | string($uuid) |
-| cnpjCpfSupplier | string |
-| cnpjCpfSupplier (pattern) | `^([0-9]{2}[.]?[0-9]{3}[.]?[0-9]{3}[/]?[0-9]{4}[-]?[0-9]{2})$` |
-| cnpjCpfSupplier (pattern) | `^([0-9]{3}[.]?[0-9]{3}[.]?[0-9]{3}[-]?[0-9]{2})$` |
-| isCnpjSupplier | boolean |
-| nameSupplier | string |
-| postalSupplier | string |
-| postalSupplier (pattern) | `^[0-9]{2}[.]?[0-9]{3}[-]?[0-9]{3}$` |
-| emailSupplier | string |
-| rgSupplier | string |
-| rgSupplier (pattern) |`^[0-9]{2}[.]?[0-9]{3}[.]?[0-9]{3}[-]?[0-9]{1}$` |
-| birthdaySupplier | string($date) |
-| createdAt | string($date-time) |
-| updatedAt | string($date-time) |
+| Fornecedor                |                                                              |
+| ------------------------- | ------------------------------------------------------------ |
+| idSupplier                | string($uuid)                                                |
+| cnpjCpfSupplier           | string                                                       |
+| cnpjCpfSupplier (pattern) | `^[0-9]{2}[.]?[0-9]{3}[.]?[0-9]{3}[/]?[0-9]{4}[-]?[0-9]{2}$` |
+| cnpjCpfSupplier (pattern) | `^[0-9]{3}[.]?[0-9]{3}[.]?[0-9]{3}[-]?[0-9]{2}$`             |
+| isCnpjSupplier            | boolean                                                      |
+| nameSupplier              | string                                                       |
+| postalSupplier            | string                                                       |
+| postalSupplier (pattern)  | `^[0-9]{2}[.]?[0-9]{3}[-]?[0-9]{3}$`                         |
+| emailSupplier             | string                                                       |
+| rgSupplier                | string                                                       |
+| rgSupplier (pattern)      | `^[0-9]{2}[.]?[0-9]{3}[.]?[0-9]{3}[-]?[0-9]{1}$`             |
+| birthdaySupplier          | string($date)                                                |
+| createdAt                 | string($date-time)                                           |
+| updatedAt                 | string($date-time)                                           |
 
 
-| Empresa |  |
-| - | - |
-| idCompany | string($uuid) |
-| cnpjCompany | string |
-| cnpjCompany (pattern) | `^([0-9]{2}[.]?[0-9]{3}[.]?[0-9]{3}[/]?[0-9]{4}[-]?[0-9]{2})$` |
-| cnpjCompany (pattern) | `^([0-9]{3}[.]?[0-9]{3}[.]?[0-9]{3}[-]?[0-9]{2})$` |
-| fantasyNameCompany | string |
-| postalCompany | string |
-| postalCompany (pattern) | `^[0-9]{2}[.]?[0-9]{3}[-]?[0-9]{3}$` |
-| emailCompany | string |
-| createdAt | string($date-time) |
-| updatedAt | string($date-time) |
+| Empresa                 |                                                              |
+| ----------------------- | ------------------------------------------------------------ |
+| idCompany               | string($uuid)                                                |
+| cnpjCompany             | string                                                       |
+| cnpjCompany (pattern)   | `^[0-9]{2}[.]?[0-9]{3}[.]?[0-9]{3}[/]?[0-9]{4}[-]?[0-9]{2}$` |
+| cnpjCompany (pattern)   | `^[0-9]{3}[.]?[0-9]{3}[.]?[0-9]{3}[-]?[0-9]{2}$`             |
+| fantasyNameCompany      | string                                                       |
+| postalCompany           | string                                                       |
+| postalCompany (pattern) | `^[0-9]{2}[.]?[0-9]{3}[-]?[0-9]{3}$`                         |
+| emailCompany            | string                                                       |
+| createdAt               | string($date-time)                                           |
+| updatedAt               | string($date-time)                                           |
 
-| Usuário ||
-| - | - |
-| idUser | string($uuid) |
-| nameUser | string |
-| usernameUser | string |
-| passwordUser | string |
-| docUser | string |
-| docUser (pattern) | `^([0-9]{2}[.]?[0-9]{3}[.]?[0-9]{3}[/]?[0-9]{4}[-]?[0-9]{2})$` |
-| docUser (pattern) | `^([0-9]{3}[.]?[0-9]{3}[.]?[0-9]{3}[-]?[0-9]{2})$` |
-| isCpfUser | boolean |
-| emailUser | string |
-| createdAt | string($date-time) |
-| updatedAt | string($date-time) |
+
+| Usuário           |                                                              |
+| ----------------- | ------------------------------------------------------------ |
+| idUser            | string($uuid)                                                |
+| nameUser          | string                                                       |
+| usernameUser      | string                                                       |
+| passwordUser      | string                                                       |
+| docUser           | string                                                       |
+| docUser (pattern) | `^[0-9]{2}[.]?[0-9]{3}[.]?[0-9]{3}[/]?[0-9]{4}[-]?[0-9]{2}$` |
+| docUser (pattern) | `^[0-9]{3}[.]?[0-9]{3}[.]?[0-9]{3}[-]?[0-9]{2}$`             |
+| isCpfUser         | boolean                                                      |
+| emailUser         | string                                                       |
+| createdAt         | string($date-time)                                           |
+| updatedAt         | string($date-time)                                           |
 
 
 ## Devs
