@@ -11,10 +11,10 @@ import com.hoel.connecthey.model.SupplierModel;
 
 @Repository
 public interface SupplierRepository extends JpaRepository<SupplierModel, UUID> {
-   
-   @Query(value = "select * from SUPPLIER where LOWER(NAME_SUPPLIER) LIKE '%' || ?1 || '%'", nativeQuery = true)
- List<SupplierModel> findAllByName(String name);
 
-   @Query(value = "select * from SUPPLIER where LOWER(CNPJ_CPF_SUPPLIER) LIKE '%' || ?1 || '%'", nativeQuery = true)
-   List<SupplierModel> findAllByDoc(String doc);
+  @Query(value = "select * from SUPPLIER where LOWER(NAME_SUPPLIER) LIKE '%' || ?1 || '%'", nativeQuery = true)
+  List<SupplierModel> findAllByName(String name);
+
+  @Query(value = "select * from SUPPLIER where LOWER(CNPJ_CPF_SUPPLIER) LIKE '%' || ?1 || '%'", nativeQuery = true)
+  List<SupplierModel> findAllByDoc(String doc);
 }

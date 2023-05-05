@@ -12,7 +12,7 @@ import com.hoel.connecthey.model.CompanyModel;
 @Repository
 public interface CompanyRepository extends JpaRepository<CompanyModel, UUID> {
 
-@Query(value = "SELECT * FROM COMPANY WHERE LOWER(FANTASY_NAME_COMPANY) LIKE '%' || ?1 || '%'", nativeQuery = true)
+   @Query(value = "SELECT * FROM COMPANY WHERE LOWER(FANTASY_NAME_COMPANY) LIKE '%' || ?1 || '%'", nativeQuery = true)
    List<CompanyModel> findAllByName(String name);
 
    @Query(value = "select * from COMPANY where LOWER(CNPJ_COMPANY) LIKE '%' || ?1 || '%'", nativeQuery = true)
