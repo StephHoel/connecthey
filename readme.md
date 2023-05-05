@@ -88,12 +88,12 @@ h. Validar CEP na API http://cep.la/api, a validação também deve ser feita no
 
 #### Novo Fornecedor (Pessoa Física)
 <p align="center">
-  <img src=".github/new_suppliers_pf.png" width="100%">
+  <img src=".github/new_supplier_pf.png" width="100%">
 </p>
 
 #### Novo Fornecedor (Pessoa Jurídica)
 <p align="center">
-  <img src=".github/new_suppliers_pj.png" width="100%">
+  <img src=".github/new_supplier_pj.png" width="100%">
 </p>
 
 ## Documentação da API
