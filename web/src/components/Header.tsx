@@ -1,36 +1,64 @@
 import { useRouter } from "next/router"
 import { MagnifyingGlass } from 'phosphor-react';
 
-export function Header() {
+export function Header({ logged }: any) {
    const router = useRouter()
 
+   const notLogged = () => {
+      return
+   }
+
    return (
-      <div className='w-screen h-28 bg-violet-600 opacity-90 space-x-[30%] 
-                     py-4 grid grid-flow-col text-gray-300'>
-         <div className='text-left ml-12 text-5xl self-center'>
-            <a onClick={() => { router.push("/") }} className='cursor-pointer hover:text-gray-100 hover:font-semibold'>Connect Hey</a>
+      <header className='w-screen h-28 bg-violet-600 opacity-90 space-x-[30%] text-gray-300
+                        flex justify-between items-center p-4'>
+         <div className="text-left ml-12 text-5xl self-center font-semibold">
+            <a onClick={() => { router.push("/") }} className='cursor-pointer whitespace-nowrap hover:text-white'>
+               Connect Hey
+            </a>
          </div>
-         <div className='grid grid-flow-col text-right items-center text-3xl'>
-            <div className='space-x-4 flex pr-96'>
-               <p><a onClick={() => { router.push("/companies") }} className='cursor-pointer whitespace-nowrap flex items-center hover:text-gray-100 hover:font-semibold'>
-                     <span className="inline-flex mr-2">
-                        <MagnifyingGlass size={15} />
-                     </span>
-                     <span>Negócios</span>
-               </a></p>
-               <p>|</p>
-               <p><a onClick={() => { router.push("/suppliers") }} className='cursor-pointer whitespace-nowrap flex items-center hover:text-gray-100 hover:font-semibold'>
-                  <span className="inline-flex mr-2">
-                     <MagnifyingGlass size={15} />
-                  </span>
-                  <span>Fornecedores</span>
-               </a></p>
-               <p>|</p>
-               <p><a onClick={() => { router.push("/new/company") }} className='cursor-pointer whitespace-nowrap hover:text-gray-100 hover:font-semibold'>Cadastrar Negócios</a></p>
-               <p>|</p>
-               <p><a onClick={() => { router.push("/new/supplier") }} className='cursor-pointer whitespace-nowrap hover:text-gray-100 hover:font-semibold'>Cadastrar Fornecedores</a></p>
-            </div>
-         </div>
-      </div>
+
+         {logged ?
+            <nav className="flex items-center space-x-4 text-right text-3xl font-semibold pr-16">
+               <a onClick={() => { router.push("/companies") }}
+                  className="cursor-pointer whitespace-nowrap hover:text-white">
+                  <span className="inline-flex mr-2"> <MagnifyingGlass size={15} /> </span>
+                  Negócios
+               </a>
+               <a className="text-3xl">|</a>
+               <a onClick={() => { router.push("/suppliers") }}
+                  className="cursor-pointer whitespace-nowrap hover:text-white">
+                  <span className="inline-flex mr-2"> <MagnifyingGlass size={15} /> </span>
+                  Fornecedores
+               </a>
+               <a className="text-3xl">|</a>
+               {/* <a onClick={() => { router.push("/new/company") }}
+                  className="cursor-pointer whitespace-nowrap hover:text-white">
+                  Cadastrar Negócios
+               </a>
+               <a className="text-3xl">|</a>
+               <a onClick={() => { router.push("/new/supplier") }}
+                  className="cursor-pointer whitespace-nowrap hover:text-white">
+                  Cadastrar Fornecedores
+               </a>
+               <a className="text-3xl">|</a> */}
+               <a onClick={() => { router.push("/user/logout") }}
+                  className="cursor-pointer whitespace-nowrap hover:text-red-500">
+                  Sair
+               </a>
+            </nav>
+            :
+            <nav className="flex items-center space-x-4 text-right text-3xl font-semibold pr-16">
+               <a onClick={() => { router.push("/user/register") }}
+                  className="cursor-pointer whitespace-nowrap hover:text-white">
+                  Cadastrar-se
+               </a>
+               <a className="text-3xl">|</a>
+               <a onClick={() => { router.push("/user/login") }}
+                  className="cursor-pointer whitespace-nowrap hover:text-white">
+                  Login
+               </a>
+            </nav>
+         }
+      </header>
    )
 }

@@ -17,7 +17,7 @@ export default function NewSupplier() {
    const [name, setName] = useState('')
    const [cep, setCep] = useState('')
    const [email, setEmail] = useState('')
-   const [isChecked, setIsChecked] = useState<boolean>(false);
+   const [isChecked, setIsChecked] = useState<boolean>(false)
 
    const router = useRouter()
 

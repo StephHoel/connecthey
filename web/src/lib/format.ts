@@ -1,3 +1,4 @@
+import bcrypt from 'bcryptjs';
 
 export function doc(doc: String) {
    //[0-9]{2}[.]?[0-9]{3}[.]?[0-9]{3}[/]?[0-9]{4}[-]?[0-9]{2}
@@ -9,4 +10,8 @@ export function doc(doc: String) {
 
 export function zip(zip: String) {
    return zip.substring(0, 2) + "." + zip.substring(2, 5) + "-" + zip.substring(5, 8)
+}
+
+export function hash(hash: string) {
+   return bcrypt.hashSync(hash, 5)
 }
