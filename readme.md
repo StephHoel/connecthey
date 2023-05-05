@@ -21,7 +21,7 @@ Com o Connect Hey você pode conectar sua empresa com os fornecedores que você 
 
 ## Descrição do Projeto
 
-Neste projeto você vai encontrar uma API que será consumida por uma aplicação web que conecta empresas à fornecedores.
+Neste projeto você vai encontrar uma API e uma aplicação web que devem ser usadas juntas para formr um website completo que conecta empresas à fornecedores.
 
 O que foi utilizado:
 - Back-end: Spring Boot, Java
@@ -30,10 +30,11 @@ O que foi utilizado:
 
 ## Funcionalidades
 
-- [x] Cadastro de Empresa
+- [x] Cadastro de Negócio
 - [x] Cadastro de Fornecedor
+- [ ] Cadastro de Usuários (quem cadastrará negócios e fornecedores)
 - [ ] Perfil com possibilidade de edição das informações e exclusão de cadastro
-- [x] Listagem de Empresas por Nome
+- [x] Listagem de Negócio por Nome
 - [x] Listagem de Fornecedor por Nome
 - [ ] Listagem de Fornecedor por CPF/CNPJ
 
@@ -98,71 +99,96 @@ h. Validar CEP na API http://cep.la/api, a validação também deve ser feita no
 
 ## Documentação da API
 
-#### Fornecedor (suppplier)
+### Caminhos
 
-```http
-  GET    /api/supplier                Retornar todos
-  GET    /api/supplier/name/${name}   Retornar todos que contém nome informado
-  GET    /api/supplier/doc/${doc}     Retornar todos que contém CPNJ ou CPF informado
-  GET    /api/supplier/${id}          Retornar um
-  POST   /api/supplier                Criar
-  PUT    /api/supplier                Atualizar
-  DELETE /api/supplier                Deletar
-```
-
-
-#### Empresas (company)
-
-```http
-  GET    /api/company                 Retornar todos
-  GET    /api/supplier/name/${name}   Retornar todos que contém nome informado
-  GET    /api/supplier/doc/${doc}     Retornar todos que contém CPNJ ou CPF informado
-  GET    /api/company/${id}           Retornar um
-  POST   /api/company                 Criar
-  PUT    /api/company                 Atualizar
-  DELETE /api/company                 Deletar
-```
+| Fornecedor | (suppplier) |  |
+| - | - | - |
+| GET | `/api/supplier` | Retornar todos |
+| GET | `/api/supplier/name/${name}` | Retornar todos que contém nome informado |
+| GET | `/api/supplier/doc/${doc}` | Retornar todos que contém CPNJ ou CPF informado |
+| GET | `/api/supplier/${id}` | Retornar um |
+| POST | `/api/supplier` | Criar |
+| PUT | `/api/supplier` | Atualizar |
+| DELETE | `/api/supplier` | Deletar |
 
 
-| Parâmetro   | Tipo       | Descrição                                   |
-| :---------- | :--------- | :------------------------------------------ |
-| `id`      | `UUID` | **Obrigatório**. O ID do fornecedor ou companhia que você quer |
-| `name`      | `String` | **Obrigatório**. O nome do fornecedor ou companhia que você quer |
-| `doc`      | `String` | **Obrigatório**. O CNPJ/CPF do fornecedor ou companhia que você quer |
+| Empresas | (company) |  |
+| - | - | - |
+| GET | `/api/company` | Retornar todos |
+| GET | `/api/company/name/${name}` | Retornar todos que contém nome informado |
+| GET | `/api/company/doc/${doc}` | Retornar todos que contém CPNJ ou CPF informado |
+| GET | `/api/company/${id}` | Retornar um |
+| POST | `/api/company` | Criar |
+| PUT | `/api/company` | Atualizar |
+| DELETE | `/api/company` | Deletar |
 
 
-#### Schema Fornecedor
-
-```http
-  idSupplier        string($uuid)
-  cnpjCpfSupplier   string
-                    pattern: ^([0-9]{2}[.]?[0-9]{3}[.]?[0-9]{3}[/]?[0-9]{4}[-]?[0-9]{2})$|^([0-9]{3}[.]?[0-9]{3}[.]?[0-9]{3}[-]?[0-9]{2})$
-  isCnpjSupplier    boolean
-  nameSupplier      string
-  postalSupplier    string
-                    pattern: ^[0-9]{2}[.]?[0-9]{3}[-]?[0-9]{3}$
-  emailSupplier     string
-  rgSupplier        string
-                    pattern: ^[0-9]{2}[.]?[0-9]{3}[.]?[0-9]{3}[-]?[0-9]{1}$
-  birthdaySupplier  string($date)
-  createdAt         string($date-time)
-  updatedAt         string($date-time)
-```
+| Usuários | (user) |  |
+| - | - | - |
+| GET | `/api/user/${user}/${pass}` | Retornar 1 ou nenhum |
+| POST | `/api/user` | Criar |
+| PUT | `/api/user` | Atualizar |
+| DELETE | `/api/user` | Deletar |
 
 
-#### Schema Empresa
+### Definição
 
-```http
-  idCompany           string($uuid)
-  cnpjCompany         string
-                      pattern: ^([0-9]{2}[.]?[0-9]{3}[.]?[0-9]{3}[/]?[0-9]{4}[-]?[0-9]{2})$|^([0-9]{3}[.]?[0-9]{3}[.]?[0-9]{3}[-]?[0-9]{2})$
-  fantasyNameCompany  string
-  postalCompany       string
-                      pattern: ^[0-9]{2}[.]?[0-9]{3}[-]?[0-9]{3}$
-  emailCompany        string
-  createdAt           string($date-time)
-  updatedAt           string($date-time)
-```
+| Parâmetro | Tipo | Descrição |
+| - | - | - |
+| `id` | `UUID` | **Obrigatório**. O ID do fornecedor ou companhia que você quer |
+| `name` | `String` | **Obrigatório**. O nome do fornecedor ou companhia que você quer |
+| `doc` | `String` | **Obrigatório**. O CNPJ/CPF do fornecedor ou companhia que você quer |
+| `usarname` | `String` | **Obrigatório**. O username que você quer verificar |
+| `password` | `String` | **Obrigatório**. A password que você quer verificar |
+
+
+### Schemas 
+
+| Fornecedor ||
+| - | - |
+| idSupplier | string($uuid) |
+| cnpjCpfSupplier | string |
+| cnpjCpfSupplier (pattern) | `^([0-9]{2}[.]?[0-9]{3}[.]?[0-9]{3}[/]?[0-9]{4}[-]?[0-9]{2})$` |
+| cnpjCpfSupplier (pattern) | `^([0-9]{3}[.]?[0-9]{3}[.]?[0-9]{3}[-]?[0-9]{2})$` |
+| isCnpjSupplier | boolean |
+| nameSupplier | string |
+| postalSupplier | string |
+| postalSupplier (pattern) | `^[0-9]{2}[.]?[0-9]{3}[-]?[0-9]{3}$` |
+| emailSupplier | string |
+| rgSupplier | string |
+| rgSupplier (pattern) |`^[0-9]{2}[.]?[0-9]{3}[.]?[0-9]{3}[-]?[0-9]{1}$` |
+| birthdaySupplier | string($date) |
+| createdAt | string($date-time) |
+| updatedAt | string($date-time) |
+
+
+| Empresa |  |
+| - | - |
+| idCompany | string($uuid) |
+| cnpjCompany | string |
+| cnpjCompany (pattern) | `^([0-9]{2}[.]?[0-9]{3}[.]?[0-9]{3}[/]?[0-9]{4}[-]?[0-9]{2})$` |
+| cnpjCompany (pattern) | `^([0-9]{3}[.]?[0-9]{3}[.]?[0-9]{3}[-]?[0-9]{2})$` |
+| fantasyNameCompany | string |
+| postalCompany | string |
+| postalCompany (pattern) | `^[0-9]{2}[.]?[0-9]{3}[-]?[0-9]{3}$` |
+| emailCompany | string |
+| createdAt | string($date-time) |
+| updatedAt | string($date-time) |
+
+| Usuário ||
+| - | - |
+| idUser | string($uuid) |
+| nameUser | string |
+| usernameUser | string |
+| passwordUser | string |
+| docUser | string |
+| docUser (pattern) | `^([0-9]{2}[.]?[0-9]{3}[.]?[0-9]{3}[/]?[0-9]{4}[-]?[0-9]{2})$` |
+| docUser (pattern) | `^([0-9]{3}[.]?[0-9]{3}[.]?[0-9]{3}[-]?[0-9]{2})$` |
+| isCpfUser | boolean |
+| emailUser | string |
+| createdAt | string($date-time) |
+| updatedAt | string($date-time) |
+
 
 ## Devs
 
