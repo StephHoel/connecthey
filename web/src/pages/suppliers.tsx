@@ -118,7 +118,7 @@ export default function Suppliers() {
 
          <BgBlur>
             <div className="w-fit max-w-3/4 mx-auto my-8 text-gray-600 grid grid-cols-2 gap-4">
-               {isLoaded && listSupplier.length > 0 ?
+               {isLoaded && listSupplier != null ?
                   listSupplier.map((item: Supplier, index: any) => (
                      <div
                         key={index}

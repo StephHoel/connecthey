@@ -1,14 +1,13 @@
 import { FormEvent, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
-import { Header } from "@/components/Header";
-import ScrollToTop from '@/components/ToTop';
-import { Input } from "@/components/Input";
 import { BgBlur } from "@/components/BgBlur";
 import { Button } from "@/components/FormButton";
+import { Header } from "@/components/Header";
+import { Input } from "@/components/Input";
 
-import { api } from "@/lib/axios";
 import { RegisterError, RegisterErrorZip, RegisterFailed, RegisterSuccefully } from "@/lib/alert";
+import { api } from "@/lib/axios";
 
 export default function NewSupplier() {
    const [cnpj, setCnpj] = useState('')

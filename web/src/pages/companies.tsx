@@ -2,14 +2,14 @@ import { FormEvent, Key, useEffect, useState } from "react";
 
 import { MagnifyingGlass } from 'phosphor-react';
 
+import { BgBlur } from "@/components/BgBlur";
 import { Header } from "@/components/Header";
 import ScrollToTop from '@/components/ToTop';
 
+import { GeneralError, SearchFailed } from "@/lib/alert";
 import { api } from "@/lib/axios";
 import { doc, zip } from '@/lib/format';
 import { Company } from '@/lib/model';
-import { BgBlur } from "@/components/BgBlur";
-import { GeneralError, SearchFailed } from "@/lib/alert";
 
 export default function Companies() {
 
@@ -117,7 +117,7 @@ export default function Companies() {
 
          <BgBlur>
             <div className="w-fit max-w-3/4 mx-auto my-8 text-gray-600 grid grid-cols-2 gap-4">
-               {isLoaded && listCompany.length > 0 ?
+               {isLoaded && listCompany != null ?
                   listCompany.map((item: Company, index: any) => (
                      <div
                         key={index}

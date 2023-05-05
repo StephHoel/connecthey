@@ -1,13 +1,13 @@
 import { FormEvent, useState } from "react";
 import { useRouter } from "next/router";
 
-import { api } from "@/lib/axios";
-import { RegisterError, RegisterErrorZip, RegisterFailed, RegisterSuccefully } from "@/lib/alert";
-
 import { BgBlur } from "@/components/BgBlur";
+import { Button } from "@/components/FormButton";
 import { Header } from "@/components/Header";
 import { Input } from "@/components/Input";
-import { Button } from "@/components/FormButton";
+
+import { RegisterError, RegisterErrorZip, RegisterFailed, RegisterSuccefully } from "@/lib/alert";
+import { api } from "@/lib/axios";
 
 export default function NewCompany() {
    const [cnpj, setCnpj] = useState('')

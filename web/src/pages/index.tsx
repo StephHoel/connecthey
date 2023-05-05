@@ -1,12 +1,12 @@
 import { FormEvent, useState } from 'react';
 import { useRouter } from 'next/router';
 
-import { Input } from '@/components/Input'
-import { Header } from '@/components/Header';
-
-import { api } from '@/lib/axios'
 import { BgBlur } from '@/components/BgBlur';
 import { Button } from '@/components/FormButton';
+import { Header } from '@/components/Header';
+import { Input } from '@/components/Input'
+
+import { api } from '@/lib/axios'
 import { RegisterError, RegisterErrorZip, RegisterFailed, RegisterSuccefully } from '@/lib/alert';
 
 export default function Home() {
