@@ -16,9 +16,4 @@ public class PostalModel implements Serializable {
    private String bairro;
    private String logradouro;
    private String aux;
-
-   
-
-   
-
 }

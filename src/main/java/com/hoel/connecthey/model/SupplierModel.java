@@ -61,5 +61,4 @@ public class SupplierModel implements Serializable {
 
    @Column(name = "UPDATED_AT", nullable = false)
    private LocalDateTime updatedAt;
-
 }
