@@ -10,9 +10,9 @@
 🔹 [Descrição do projeto](#descrição-do-projeto)
 
 🔹 [Funcionalidades](#funcionalidades)
-<!--
+
 🔹 [Telas](#telas)
--->
+
 🔹 [Documentação da API](#documentação-da-api)
 
 🔹 [Autores](#autores)
@@ -25,7 +25,7 @@ Neste projeto você vai encontrar uma API que será consumida por uma aplicaçã
 
 O que foi utilizado:
 - Back-end: Spring Boot, Java
-- Front-end: ReactJS, Typescript, TailWindCss
+- Front-end: ReactJS, Typescript, Tailwindcss
 - Banco de Dados do Azure para servidor flexível do PostgreSQL
 
 ## Funcionalidades
@@ -43,7 +43,7 @@ a. CRUD de todas as entidades (Front-end e Back-end)
 (f). Caso a empresa seja do Paraná, não permitir cadastrar um fornecedor pessoa física menor de idade
 h. Validar CEP na API http://cep.la/api, a validação também deve ser feita no Front-end
 -->
-<!-- 
+
 ## Telas
 
 #### Home
@@ -51,47 +51,85 @@ h. Validar CEP na API http://cep.la/api, a validação também deve ser feita no
   <img src=".github/home.png" width="100%">
 </p>
 
-#### Procurar Empresas
+#### Procurar Negócios (Dados carregados)
 <p align="center">
-  <img src=".github/companies.png" width="100%">
+  <img src=".github/companies_loaded.png" width="100%">
 </p>
 
-#### Procurar Fornecedores
+#### Procurar Negócios (Carregando)
 <p align="center">
-  <img src=".github/suppliers.png" width="100%">
-</p> -->
+  <img src=".github/companies_loading.png" width="100%">
+</p>
+
+#### Procurar Negócios (Sem dados)
+<p align="center">
+  <img src=".github/companies_not_records.png" width="100%">
+</p>
+
+#### Procurar Fornecedores (Dados carregados)
+<p align="center">
+  <img src=".github/suppliers_loaded.png" width="100%">
+</p>
+
+#### Procurar Fornecedores (Carregando)
+<p align="center">
+  <img src=".github/suppliers_loading.png" width="100%">
+</p>
+
+#### Procurar Fornecedores (Sem dados)
+<p align="center">
+  <img src=".github/suppliers_not_records.png" width="100%">
+</p>
+
+#### Novo Negócio
+<p align="center">
+  <img src=".github/new_company.png" width="100%">
+</p>
+
+#### Novo Fornecedor (Pessoa Física)
+<p align="center">
+  <img src=".github/new_suppliers_pf.png" width="100%">
+</p>
+
+#### Novo Fornecedor (Pessoa Jurídica)
+<p align="center">
+  <img src=".github/new_suppliers_pj.png" width="100%">
+</p>
 
 ## Documentação da API
 
 #### Fornecedor (suppplier)
 
 ```http
-  GET    /api/supplier          Retornar todos
-  GET    /api/supplier/name/${name}  Retornar todos que contém nome informado
-  GET    /api/supplier/doc/${doc}   Retornar todos que contém CPNJ ou CPF informado
-  GET    /api/supplier/${id}    Retornar um
-  POST   /api/supplier          Criar
-  PUT    /api/supplier          Atualizar
-  DELETE /api/supplier          Deletar
+  GET    /api/supplier                Retornar todos
+  GET    /api/supplier/name/${name}   Retornar todos que contém nome informado
+  GET    /api/supplier/doc/${doc}     Retornar todos que contém CPNJ ou CPF informado
+  GET    /api/supplier/${id}          Retornar um
+  POST   /api/supplier                Criar
+  PUT    /api/supplier                Atualizar
+  DELETE /api/supplier                Deletar
 ```
+
 
 #### Empresas (company)
 
 ```http
-  GET    /api/company           Retornar todos
-  GET    /api/supplier/name/${name}  Retornar todos que contém nome informado
-  GET    /api/supplier/doc/${doc}   Retornar todos que contém CPNJ ou CPF informado
-  GET    /api/company/${id}     Retornar um
-  POST   /api/company           Criar
-  PUT    /api/company           Atualizar
-  DELETE /api/company           Deletar
+  GET    /api/company                 Retornar todos
+  GET    /api/supplier/name/${name}   Retornar todos que contém nome informado
+  GET    /api/supplier/doc/${doc}     Retornar todos que contém CPNJ ou CPF informado
+  GET    /api/company/${id}           Retornar um
+  POST   /api/company                 Criar
+  PUT    /api/company                 Atualizar
+  DELETE /api/company                 Deletar
 ```
+
 
 | Parâmetro   | Tipo       | Descrição                                   |
 | :---------- | :--------- | :------------------------------------------ |
 | `id`      | `UUID` | **Obrigatório**. O ID do fornecedor ou companhia que você quer |
 | `name`      | `String` | **Obrigatório**. O nome do fornecedor ou companhia que você quer |
 | `doc`      | `String` | **Obrigatório**. O CNPJ/CPF do fornecedor ou companhia que você quer |
+
 
 #### Schema Fornecedor
 
@@ -108,21 +146,22 @@ h. Validar CEP na API http://cep.la/api, a validação também deve ser feita no
                     pattern: ^[0-9]{2}[.]?[0-9]{3}[.]?[0-9]{3}[-]?[0-9]{1}$
   birthdaySupplier  string($date)
   createdAt         string($date-time)
-  updatedAt	        string($date-time)
+  updatedAt         string($date-time)
 ```
+
 
 #### Schema Empresa
 
 ```http
-  idCompany	          string($uuid)
+  idCompany           string($uuid)
   cnpjCompany         string
                       pattern: ^([0-9]{2}[.]?[0-9]{3}[.]?[0-9]{3}[/]?[0-9]{4}[-]?[0-9]{2})$|^([0-9]{3}[.]?[0-9]{3}[.]?[0-9]{3}[-]?[0-9]{2})$
   fantasyNameCompany  string
-  postalCompany	      string
+  postalCompany       string
                       pattern: ^[0-9]{2}[.]?[0-9]{3}[-]?[0-9]{3}$
-  emailCompany	      string
-  createdAt	          string($date-time)
-  updatedAt	          string($date-time)
+  emailCompany        string
+  createdAt           string($date-time)
+  updatedAt           string($date-time)
 ```
 
 ## Devs
