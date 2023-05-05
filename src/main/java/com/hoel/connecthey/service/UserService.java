@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.hoel.connecthey.enums.ErrorResponse;
 import com.hoel.connecthey.exception.InvalidInput;
+import com.hoel.connecthey.exception.ResourceNotFound;
 import com.hoel.connecthey.model.UserModel;
 import com.hoel.connecthey.repository.UserRepository;
 
@@ -40,6 +41,11 @@ public class UserService extends SharedService {
 
    public UserModel findByLogin(String name, String pass) {
       return repository.findByLogin(name, pass);
+   }
+
+   public UserModel findById(UUID id) {
+      return repository.findById(id)
+            .orElseThrow(() -> new ResourceNotFound(ErrorResponse.SupplierNotFoundId.getText() + id));
    }
 
    // update

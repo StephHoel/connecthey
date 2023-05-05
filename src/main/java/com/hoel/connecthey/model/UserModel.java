@@ -39,7 +39,7 @@ public class UserModel implements Serializable {
    @Column(name = "PASSWORD_USER", nullable = false)
    private String passwordUser;
 
-   @Column(name = "DOC_USER", nullable = false)
+   @Column(name = "DOC_USER", nullable = false, unique = true)
    @Pattern(regexp = "^([0-9]{2}[.]?[0-9]{3}[.]?[0-9]{3}[/]?[0-9]{4}[-]?[0-9]{2})$|^([0-9]{3}[.]?[0-9]{3}[.]?[0-9]{3}[-]?[0-9]{2})$")
    private String docUser;
 
