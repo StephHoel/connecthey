@@ -22,7 +22,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class UsersModel implements Serializable {
+public class UserModel implements Serializable {
    private static final long serialVersionUID = 1L;
 
    @Id

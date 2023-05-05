@@ -19,11 +19,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@Table(name = "USERS_SUPPLIER")
+@Table(name = "USER_SUPPLIER")
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class UsersSupplierModel implements Serializable {
+public class UserSupplierModel implements Serializable {
    private static final long serialVersionUID = 1L;
 
    @Id
@@ -33,7 +33,7 @@ public class UsersSupplierModel implements Serializable {
 
    @ManyToOne(cascade = CascadeType.ALL)
    @JoinColumn(name = "ID_USER", referencedColumnName = "ID_USER")
-   private UsersModel user;
+   private UserModel user;
 
    @ManyToOne(cascade = CascadeType.ALL)
    @JoinColumn(name = "ID_SUPPLIER", referencedColumnName = "ID_SUPPLIER")
